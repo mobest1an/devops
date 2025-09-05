@@ -9,7 +9,7 @@ import {
     Alert,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { fetchTickets } from "../api";
+import { fetchTickets } from "../api/api";
 
 export default function TicketList() {
     const [tickets, setTickets] = useState(null);

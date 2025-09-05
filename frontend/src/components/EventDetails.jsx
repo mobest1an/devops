@@ -7,7 +7,7 @@ import {
     Alert,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { fetchEvent } from "../api";
+import { fetchEvent } from "../api/api";
 import PurchaseForm from "./PurchaseForm";
 
 export default function EventDetails({ eventId }) {

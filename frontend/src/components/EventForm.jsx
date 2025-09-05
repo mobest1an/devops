@@ -11,7 +11,7 @@ import {
     CircularProgress,
 } from "@mui/material";
 import { useState, useEffect } from "react";
-import { createEvent, updateEvent } from "../api";
+import { createEvent, updateEvent } from "../api/api";
 
 export default function EventForm({ open, onClose, initialEvent = null, onSuccess }) {
     const [form, setForm] = useState({ name: "", game: "", startTime: "", id: undefined });

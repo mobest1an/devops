@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { useEffect, useState } from "react";
-import { fetchEvents } from "../api";
+import { fetchEvents } from "../api/api";
 import { useNavigate } from "react-router-dom";
 
 export default function EventList({ refreshKey, onSelect, onEdit }) {

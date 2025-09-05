@@ -7,7 +7,7 @@ import {
     CircularProgress,
 } from "@mui/material";
 import { useState } from "react";
-import { purchaseTicket } from "../api";
+import { purchaseTicket } from "../api/api";
 
 export default function PurchaseForm({ event }) {
     const [price, setPrice] = useState("");
