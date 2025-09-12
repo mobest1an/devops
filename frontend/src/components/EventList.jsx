@@ -10,7 +10,7 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useEffect, useState } from "react";
-import { fetchEvents, deleteEvent } from "../api/api";
+import { fetchEvents } from "../api/api";
 import { useNavigate } from "react-router-dom";
 
 export default function EventList({
