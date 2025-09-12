@@ -33,12 +33,12 @@ public class TicketController {
     }
 
     @GetMapping
-    public List<Ticket> all() {
+    public List<Ticket> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public Ticket one(@PathVariable Long id) {
+    public Ticket findById(@PathVariable Long id) {
         return service.findById(id);
     }
 

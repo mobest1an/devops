@@ -32,12 +32,12 @@ public class EventController {
     }
 
     @GetMapping
-    public List<Event> all() {
+    public List<Event> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public Event one(@PathVariable Long id) {
+    public Event findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
