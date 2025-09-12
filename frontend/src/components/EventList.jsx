@@ -8,11 +8,17 @@ import {
     Alert,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useEffect, useState } from "react";
-import { fetchEvents } from "../api/api";
+import { fetchEvents, deleteEvent } from "../api/api";
 import { useNavigate } from "react-router-dom";
 
-export default function EventList({ refreshKey, onSelect, onEdit }) {
+export default function EventList({
+                                      refreshKey,
+                                      onSelect,
+                                      onEdit,
+                                      onDelete,
+                                  }) {
     const [events, setEvents] = useState(null);
     const [error, setError] = useState("");
     const navigate = useNavigate();
@@ -31,7 +37,11 @@ export default function EventList({ refreshKey, onSelect, onEdit }) {
     return (
         <List>
             {events.map((ev) => (
-                <ListItem key={ev.id} disablePadding sx={{ alignItems: "center" }}>
+                <ListItem
+                    key={ev.id}
+                    disablePadding
+                    sx={{ alignItems: "center" }}
+                >
                     <ListItemButton
                         onClick={() => {
                             onSelect?.(ev.id);
@@ -49,12 +59,27 @@ export default function EventList({ refreshKey, onSelect, onEdit }) {
                         edge="end"
                         onClick={(e) => {
                             e.stopPropagation();
-                            if (onEdit) onEdit(ev);
+                            onEdit?.(ev);
                         }}
                         size="small"
                         title="Редактировать"
                     >
                         <EditIcon fontSize="small" />
+                    </IconButton>
+
+                    <IconButton
+                        edge="end"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (window.confirm(`Удалить событие «${ev.name}»?`)) {
+                                onDelete?.(ev.id);
+                            }
+                        }}
+                        size="small"
+                        title="Удалить"
+                        color="error"
+                    >
+                        <DeleteIcon fontSize="small" />
                     </IconButton>
                 </ListItem>
             ))}
