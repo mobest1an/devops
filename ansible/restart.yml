@@ -1,0 +1,13 @@
+- name: Перезапустить все сервисы
+  hosts: all
+  become: yes
+  tasks:
+    - name: docker-compose down
+      command: docker-compose down
+      args:
+        chdir: /home/{{ ansible_user }}
+
+    - name: docker-compose up
+      command: docker-compose up -d
+      args:
+        chdir: /home/{{ ansible_user }}

@@ -21,7 +21,7 @@ import ru.karapetyan.erik.service.EventService;
  * @author erik.karapetyan
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://89.169.179.135:3000"})
 @RequestMapping("/api/events")
 public class EventController {
 
