@@ -1,5 +1,5 @@
 ---
-- name: Установка Docker и Docker Compose
+- name: Установка Docker, Docker Compose и запуск приложения
   hosts: all
   become: yes
 
@@ -27,7 +27,7 @@
         url: "{{ docker_gpg_url }}"
         state: present
 
-    - name: Добавление Docker-репозитория
+    - name: Добавление Docker репозитория
       apt_repository:
         repo: "{{ docker_repo }}"
         state: present
@@ -42,20 +42,20 @@
         state: latest
         update_cache: yes
 
-    - name: Включение и запуск службы Docker
+    - name: Запуск службы Docker
       systemd:
         name: docker
         enabled: yes
         state: started
 
-    - name: Загрузка Docker Compose
+    - name: Установка Docker Compose
       get_url:
         url: >-
           https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_facts['system'] }}-{{ ansible_facts['architecture'] }}
         dest: /usr/local/bin/docker-compose
         mode: '0755'
 
-    - name: Создание символической ссылки на docker-compose
+    - name: Создание символической ссылки на Docker Compose
       file:
         src: /usr/local/bin/docker-compose
         dest: /usr/bin/docker-compose

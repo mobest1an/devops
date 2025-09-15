@@ -1,0 +1,1 @@
+ansible-playbook -i inventory.ini install_and_startup.yml
