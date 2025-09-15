@@ -11,11 +11,18 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres_user" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
 
   backend:
     image: leon2281337/devops_lab1-backend:amd64
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres_db
       SPRING_DATASOURCE_USERNAME: postgres_user
