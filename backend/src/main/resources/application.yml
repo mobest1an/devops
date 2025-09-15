@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://postgres:5432/ticketshop
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://postgres:5432/postgres_db
+    username: postgres_user
+    password: postgres_password
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
