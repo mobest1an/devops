@@ -2,6 +2,7 @@ terraform {
   required_providers {
     yandex = {
       source = "yandex-cloud/yandex"
+      version = "~> 0.93"
     }
   }
   required_version = ">= 0.13"
@@ -14,13 +15,13 @@ provider "yandex" {
 resource "yandex_compute_disk" "boot-disk-1" {
   name     = "boot-disk-1"
   type     = "network-ssd"
-  zone     = "ru-central1-d"
+  zone     = "ru-central1-b"
   size     = "20"
   image_id = "fd888dplf7gt1nguheht"
 }
 
-resource "yandex_compute_instance" "vm-1" {
-  name = "terraform-vm"
+resource "yandex_compute_instance" "vm-1-1" {
+  name = "terraform-vm-1"
 
   platform_id = "standard-v2"
 

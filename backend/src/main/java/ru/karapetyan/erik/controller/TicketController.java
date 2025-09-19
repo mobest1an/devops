@@ -22,7 +22,7 @@ import ru.karapetyan.erik.service.TicketService;
  * @author erik.karapetyan
  */
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "http://89.169.179.135:3000"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://51.250.28.17:3000"})
 @RequestMapping("/api/tickets")
 public class TicketController {
 
