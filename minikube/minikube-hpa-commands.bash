@@ -12,3 +12,5 @@ helm install prometheus prometheus-community/kube-prometheus-stack --set prometh
 
 kubectl port-forward <pod> <port>:<port>
 kubectl get secret prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+sudo minikube tunnel
