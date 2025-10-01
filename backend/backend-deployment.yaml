@@ -3,14 +3,14 @@ kind: Ingress
 metadata:
   name: devops-2025-backend-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
     - host: backend.devops-2025
       http:
         paths:
-          - path: /backend
-            pathType: Prefix
+          - path: /backend/(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: devops-2025-backend
@@ -48,7 +48,7 @@ spec:
     spec:
       containers:
         - name: devops-2025-backend
-          image: leon2281337/devops_lab1-backend:amd64
+          image: leon2281337/devops_lab1-backend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

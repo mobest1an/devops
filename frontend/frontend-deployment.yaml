@@ -2,14 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: devops-2025-frontend-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - host: frontend.devops-2025
       http:
         paths:
-          - path: /frontend
+          - path: /
             pathType: Prefix
             backend:
               service:
@@ -27,8 +25,8 @@ spec:
   selector:
     app: devops-2025-frontend
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 80
+      targetPort: 80
 
 ---
 
@@ -48,10 +46,10 @@ spec:
     spec:
       containers:
         - name: devops-2025-frontend
-          image: leon2281337/devops_lab1-frontend:amd64
+          image: leon2281337/devops_lab1-frontend:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 80
           resources:
             requests:
               cpu: 100m
